@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Messenger</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Боковая панель с чатами -->
+        <div class="sidebar">
+            <div class="user-info">
+                <span class="username"><%= username %></span>
+                <% if (isAdmin) { %>
+                    <span class="admin-badge">ADMIN</span>
+                <% } %>
+                </div>
+            
+            <button id="invite-chat-btn" class="sidebar-btn">Join Chat by Code</button>
+            
+            <div class="chat-list">
+                <h3>Public Chats</h3>
+                <div class="chat-item" data-chat="general">General</div>
+                <div class="chat-item" data-chat="ru1">[RU] Chat 1</div>
+                <div class="chat-item" data-chat="ru2">[RU] Chat 2</div>
+                <div class="chat-item" data-chat="en1">[EN] Chat 1</div>
+                <div class="chat-item" data-chat="en2">[EN] Chat 2</div>
+                
+                <% if (isAdmin) { %>
+                    <h3>Admin Chats</h3>
+                    <div class="chat-item" data-chat="appelations">Appelations</div>
+                <% } %>
+                
+                <% if (username === 'Wounsee') { %>
+                    <div class="chat-item" data-chat="secret">Secret</div>
+                <% } %>
+            </div>
+        </div>
+        
+        <!-- Основное окно чата -->
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2 id="current-chat-name">General</h2>
+            </div>
+            
+            <div class="messages-container" id="messages-container">
+                <!-- Сообщения будут добавляться здесь -->
+            </div>
+            
+            <div class="message-input-container">
+                <div class="reply-preview" id="reply-preview"></div>
+                <div class="input-area">
+                    <input type="text" id="message-input" placeholder="Type your message...">
+                    <button id="send-button">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для приглашений -->
+    <div class="modal" id="invite-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Join Private Chat</h3>
+            <input type="text" id="invite-code" placeholder="Enter invitation code">
+            <button id="join-chat-btn">Join Chat</button>
+            
+            <% if (username === 'Wounsee') { %>
+                <div class="invite-settings">
+                    <h4>Create Invitation (Admin)</h4>
+                    <label>
+                        Max uses: 
+                        <input type="number" id="max-uses" min="1" value="1">
+                    </label>
+                    <button id="generate-invite-btn">Generate Code</button>
+                    <div id="generated-code"></div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    <!-- Модальное окно бана -->
+    <div class="modal" id="ban-modal">
+        <div class="modal-content">
+            <h3>You have been banned</h3>
+            <div class="ban-info">
+                <p>Moderator: <span id="ban-moderator"></span></p>
+                <p>Reason: <span id="ban-reason"></span></p>
+                <p>Duration: <span id="ban-duration"></span> days</p>
+            </div>
+            <textarea id="appeal-text" placeholder="Your appeal..."></textarea>
+            <button id="submit-appeal">Submit Appeal</button>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

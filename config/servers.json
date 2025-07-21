@@ -1,0 +1,6 @@
+{
+  "ru1": {"name": "Russian Server 1", "region": "ru"},
+  "ru2": {"name": "Russian Server 2", "region": "ru"},
+  "en1": {"name": "English Server 1", "region": "en"},
+  "en2": {"name": "English Server 2", "region": "en"}
+}

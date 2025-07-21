@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Banned - Advanced Messenger</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box banned-box">
+            <h1>Account Banned</h1>
+            
+            <div class="ban-info">
+                <p>Your account <strong><%= username %></strong> has been banned.</p>
+                <p>Duration: <strong><%= days %> day(s)</strong></p>
+                <p>Reason: <strong>Violation of rules</strong></p>
+            </div>
+            
+            <form action="/submit-appeal" method="POST">
+                <div class="form-group">
+                    <label for="appeal">Appeal (optional)</label>
+                    <textarea id="appeal" name="appeal" rows="4"></textarea>
+                </div>
+                
+                <button type="submit" class="auth-button">Submit Appeal</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
